@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {useState} from 'react';
 import {
   Image,
   Text,
@@ -6,92 +6,13 @@ import {
   View,
   Picker,
   StyleSheet,
-  Button,
   TouchableHighlight,
 } from 'react-native';
 
-export default class Expense extends Component {
-  state = {
-    reason: '',
-    level: '',
-  };
-
-  render() {
-    return (
-      <View style={this.styles.mainView}>
-        {/* line1 */}
-        <View style={[this.styles.partView, {marginTop: 56}]}>
-          <TextInput
-            style={this.styles.moneyInput}
-            keyboardType="numeric"
-            placeholder="Số tiền"></TextInput>
-          <Text style={{fontSize: 32}}>đ</Text>
-        </View>
-        {/* line2 */}
-        <View style={[this.styles.partView, {marginTop: 29}]}>
-          <Text style={this.styles.label}>Lý do</Text>
-          <View style={this.styles.selectBox}>
-            <Picker
-              selectedValue={this.state.reason}
-              onValueChange={(value) => {
-                this.setState({
-                  reason: value,
-                });
-              }}>
-              <Picker.Item label="Mua bột giặt" value="Mua bột giặt" />
-              <Picker.Item label="Nấu cơm" value="Nấu cơm" />
-            </Picker>
-          </View>
-          <Image
-            source={require('./images/add.png')}
-            style={{
-              marginStart: 13,
-            }}></Image>
-        </View>
-        {/* line3 */}
-        <View style={[this.styles.partView, {marginTop: 16}]}>
-          <Text style={this.styles.label}>Khác</Text>
-          <TextInput style={this.styles.anotherInput}></TextInput>
-        </View>
-        {/* line4 */}
-        <View style={[this.styles.partView, {marginTop: 16}]}>
-          <Text style={this.styles.label}>Thời gian</Text>
-          <Text style={[this.styles.label, {marginStart: 14}]}>
-            22:00:11 12/9/2019
-          </Text>
-        </View>
-        {/* line5 */}
-        <View style={[this.styles.partView, {marginTop: 16}]}>
-          <Text style={this.styles.label}>Cấp độ</Text>
-          <View style={this.styles.selectBox}>
-            <Picker
-              selectedValue={this.state.level}
-              onValueChange={(value) => {
-                this.setState({
-                  level: value,
-                });
-              }}>
-              <Picker.Item label="Bình thường" value="Bình thường" />
-              <Picker.Item label="Khó" value="Khó" />
-            </Picker>
-          </View>
-          <Image
-            source={require('./images/add.png')}
-            style={{
-              marginStart: 13,
-            }}></Image>
-        </View>
-        {/* line6 */}
-        <TouchableHighlight style={[this.styles.button, {marginTop: 16}]}>
-          <View>
-            <Text style={this.styles.buttonText}>Lưu lại</Text>
-          </View>
-        </TouchableHighlight>
-      </View>
-    );
-  }
-
-  styles = StyleSheet.create({
+const Expense = (props) => {
+  const [reason, setReason] = useState(true);
+  const [level, setLevel] = useState(true);
+  const styles = StyleSheet.create({
     mainView: {
       marginTop: 50,
       marginStart: 16,
@@ -107,12 +28,14 @@ export default class Expense extends Component {
     },
     moneyInput: {
       height: 60,
-      width: 200,
-      borderWidth: 1,
-      borderColor: 'gray',
+      width: 150,
       fontSize: 32,
       textAlign: 'center',
       color: 'black',
+      marginStart: 15,
+      marginEnd: 15,
+      borderBottomWidth: 1,
+      borderBottomColor: 'black',
     },
     selectBox: {
       height: 56,
@@ -144,5 +67,90 @@ export default class Expense extends Component {
       color: 'white',
       fontSize: 24,
     },
+    marginTop16: {
+      marginTop: 16,
+    },
+    marginTop56: {
+      marginTop: 56,
+    },
+    marginStart13: {
+      marginStart: 13,
+    },
+    marginTop29: {
+      marginTop: 29,
+    },
+    fontSize32: {
+      fontSize: 32,
+    },
   });
-}
+
+  return (
+    <View style={styles.mainView}>
+      {/* line1 */}
+      <View style={[styles.partView, styles.marginTop56]}>
+        <TextInput
+          style={styles.moneyInput}
+          keyboardType="numeric"
+          placeholder="Số tiền"
+        />
+        <Text style={styles.fontSize32}>đ</Text>
+      </View>
+      {/* line2 */}
+      <View style={[styles.partView, styles.marginTop29]}>
+        <Text style={styles.label}>Lý do</Text>
+        <View style={styles.selectBox}>
+          <Picker
+            selectedValue={reason}
+            onValueChange={(value) => {
+              setReason(value);
+            }}>
+            <Picker.Item label="Mua bột giặt" value="Mua bột giặt" />
+            <Picker.Item label="Nấu cơm" value="Nấu cơm" />
+          </Picker>
+        </View>
+        <Image
+          source={require('./images/add.png')}
+          style={styles.marginStart13}
+        />
+      </View>
+      {/* line3 */}
+      <View style={[styles.partView, styles.marginTop16]}>
+        <Text style={styles.label}>Khác</Text>
+        <TextInput style={styles.anotherInput} />
+      </View>
+      {/* line4 */}
+      <View style={[styles.partView, styles.marginTop16]}>
+        <Text style={styles.label}>Thời gian</Text>
+        <Text style={[styles.label, styles.marginStart13]}>
+          22:00:11 12/9/2019
+        </Text>
+      </View>
+      {/* line5 */}
+      <View style={[styles.partView, styles.marginTop16]}>
+        <Text style={styles.label}>Cấp độ</Text>
+        <View style={styles.selectBox}>
+          <Picker
+            selectedValue={level}
+            onValueChange={(value) => {
+              setLevel(value);
+            }}>
+            <Picker.Item label="Bình thường" value="Bình thường" />
+            <Picker.Item label="Khó" value="Khó" />
+          </Picker>
+        </View>
+        <Image
+          source={require('./images/add.png')}
+          style={styles.marginStart13}
+        />
+      </View>
+      {/* line6 */}
+      <TouchableHighlight style={[styles.button, styles.marginTop16]}>
+        <View>
+          <Text style={styles.buttonText}>Lưu lại</Text>
+        </View>
+      </TouchableHighlight>
+    </View>
+  );
+};
+
+export default Expense;
