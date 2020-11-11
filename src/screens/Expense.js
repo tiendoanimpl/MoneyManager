@@ -1,16 +1,17 @@
 import React, {useState} from 'react';
 import {
   Image,
-  Text,
   Picker,
-  TextInput,
-  View,
   StyleSheet,
+  Text,
+  TextInput,
   TouchableHighlight,
+  View,
 } from 'react-native';
 import assets from '../assets';
+import screenNames from '../config/screenNames';
 
-const Expense = (props) => {
+const ExpenseScreen = ({navigation}) => {
   const [reason, setReason] = useState(true);
   const [level, setLevel] = useState(true);
   const selectBoxStyle = {
@@ -163,7 +164,11 @@ const Expense = (props) => {
       </View>
 
       {/* line6 */}
-      <TouchableHighlight style={[styles.saveButton]}>
+      <TouchableHighlight
+        style={[styles.saveButton]}
+        onPress={() => {
+          navigation.push(screenNames.expense);
+        }}>
         <View>
           <Text style={styles.buttonText}>Lưu lại</Text>
         </View>
@@ -172,4 +177,4 @@ const Expense = (props) => {
   );
 };
 
-export default Expense;
+export default ExpenseScreen;
