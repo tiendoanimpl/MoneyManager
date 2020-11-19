@@ -1,1 +1,1 @@
-export {default} from './ExpenseScreen';
+export { default } from './ExpenseScreen';

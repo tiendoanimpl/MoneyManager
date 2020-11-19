@@ -1,1 +1,1 @@
-export {default} from './MoneyDetailScreen';
+export { default } from './MoneyDetailScreen';
