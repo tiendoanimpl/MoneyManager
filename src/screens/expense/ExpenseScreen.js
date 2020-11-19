@@ -1,14 +1,14 @@
 import React, {useState} from 'react';
 import {
   Image,
-  Text,
   Picker,
-  TextInput,
-  View,
   StyleSheet,
+  Text,
+  TextInput,
   TouchableHighlight,
+  View,
 } from 'react-native';
-import assets from '../assets';
+import assets from '../../assets';
 
 const Expense = (props) => {
   const [reason, setReason] = useState(true);
@@ -23,6 +23,9 @@ const Expense = (props) => {
     borderWidth: 1,
     borderRadius: 10,
     paddingStart: 16,
+  };
+  const label = {
+    fontSize: 24,
   };
   const styles = StyleSheet.create({
     mainView: {
@@ -57,7 +60,7 @@ const Expense = (props) => {
       alignItems: 'center',
     },
     label: {
-      fontSize: 24,
+      ...label,
     },
     moneyInput: {
       height: 60,
@@ -107,7 +110,14 @@ const Expense = (props) => {
       color: 'white',
       fontSize: 24,
     },
-    marginStart13: {
+    reasonAddIcon: {
+      marginStart: 13,
+    },
+    levelAddIcon: {
+      marginStart: 13,
+    },
+    timeLabel: {
+      ...label,
       marginStart: 13,
     },
   });
@@ -128,12 +138,16 @@ const Expense = (props) => {
       <View style={styles.reasonLayout}>
         <Text style={styles.label}>Lý do</Text>
         <View style={styles.selectBox}>
-          <Picker selectedValue={reason}>
+          <Picker
+            selectedValue={reason}
+            onValueChange={(value) => {
+              setReason(value);
+            }}>
             <Picker.Item label="Mua bột giặt" value="Mua bột giặt" />
             <Picker.Item label="Nấu cơm" value="Nấu cơm" />
           </Picker>
         </View>
-        <Image source={assets.images.addIcon} style={styles.marginStart13} />
+        <Image source={assets.images.icAdd} style={styles.reasonAddIcon} />
       </View>
 
       {/* line3 */}
@@ -145,9 +159,7 @@ const Expense = (props) => {
       {/* line4 */}
       <View style={styles.timeLayout}>
         <Text style={styles.label}>Thời gian</Text>
-        <Text style={[styles.label, styles.marginStart13]}>
-          22:00:11 12/9/2019
-        </Text>
+        <Text style={[styles.timeLabel]}>22:00:11 12/9/2019</Text>
       </View>
 
       {/* line5 */}
@@ -159,7 +171,7 @@ const Expense = (props) => {
             <Picker.Item label="Khó" value="Khó" />
           </Picker>
         </View>
-        <Image source={assets.images.addIcon} style={styles.marginStart13} />
+        <Image source={assets.images.icAdd} style={styles.levelAddIcon} />
       </View>
 
       {/* line6 */}
