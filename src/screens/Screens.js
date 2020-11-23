@@ -1,5 +1,5 @@
-import { createDrawerNavigator } from '@react-navigation/drawer';
-import { NavigationContainer } from '@react-navigation/native';
+import {createDrawerNavigator} from '@react-navigation/drawer';
+import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
 import assets from '../assets';
 import NavigationDrawer from '../components/NavigationDrawer';

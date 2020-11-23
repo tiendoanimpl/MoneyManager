@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { View } from 'react-native';
+import React, {useState} from 'react';
+import {View} from 'react-native';
 import NavigationDrawerHeader from './NavigationDrawerHeader';
 import NavigationDrawerMenuItem from './NavigationDrawerMenuItem';
 import styles from './styles';
 
-function NavigationDrawer({ menuItems, emails, ...props }) {
+function NavigationDrawer({menuItems, emails, ...props}) {
   const [currentSelectedMenuItem, setSelectMenuItem] = useState(
     menuItems[0].id,
   );

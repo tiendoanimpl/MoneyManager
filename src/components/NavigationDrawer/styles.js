@@ -1,10 +1,10 @@
-import { Platform, StyleSheet } from 'react-native';
-import { colors } from '../../styles';
+import {Platform, StyleSheet} from 'react-native';
+import {colors} from '../../styles';
 export default StyleSheet.create({
   header: {
     height: 148,
     backgroundColor: colors.navigationDrawer.background,
-    marginTop: Platform.select({ android: 0, ios: 32 }),
+    marginTop: Platform.select({android: 0, ios: 32}),
   },
   headerLogo: {
     height: 64,

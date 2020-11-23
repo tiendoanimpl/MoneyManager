@@ -1,6 +1,6 @@
 import React from 'react';
-import { Image, Text, View } from 'react-native';
-import { TouchableHighlight } from 'react-native-gesture-handler';
+import {Image, Text, View} from 'react-native';
+import {TouchableHighlight} from 'react-native-gesture-handler';
 import colors from '../../styles/colors';
 import styles from './styles';
 

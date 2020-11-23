@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { Image, Text, View } from 'react-native';
-import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
-import { Button, Menu } from 'react-native-paper';
+import React, {useState} from 'react';
+import {Image, Text, View} from 'react-native';
+import {TouchableWithoutFeedback} from 'react-native-gesture-handler';
+import {Button, Menu} from 'react-native-paper';
 import assets from '../../assets';
 import styles from './styles';
 
-const NavigationDrawerHeader = ({ emails }) => {
+const NavigationDrawerHeader = ({emails}) => {
   const [visible, setEmailListVisible] = useState(false);
   const [selectEmail, setSelectEmail] = useState(emails[0]);
 
